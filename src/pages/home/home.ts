@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController,AlertController,ToastController } from 'ionic-angular';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
+import { Http } from '@angular/http';
 
 declare var cordova: any; // global variable for paths
 
@@ -14,7 +15,26 @@ declare var cordova: any; // global variable for paths
 
 export class HomePage {
 //Setup parameters for Camera and Picture
-picture: any
+picture: any;
+mileage: boolean=false;
+start: string;
+end: string;
+posts: any;
+car_selected:boolean=false;
+
+if(mileage = true){
+  console.log('Calling Distance Matrix:' + this.mileage);
+}
+
+callDistMatrix() {
+    this.posts = null;
+
+    //this.http.get('https://maps.googleapis.com/maps/api/distancematrix/json?units=km&origins=570158&destinations=nus&key=AIzaSyBVXQmKg9DsI69_Vm_cnbhLWzXI8jG2SSA').map(res => res.json()).subscribe(data => {
+    this.http.get("'https://maps.googleapis.com/maps/api/distancematrix/json?units=km&origins=" + this.start + "&destinations=" + this.end + "&key=AIzaSyBVXQmKg9DsI69_Vm_cnbhLWzXI8jG2SSA'").map(res => res.json()).subscribe(data => {
+    this.posts = data.rows[0].elements[0].distance.text;
+    console.log(this.posts);
+    })
+  }
 
 cameraPreviewOpts: CameraPreviewOptions = {
     x: 0,
@@ -34,8 +54,9 @@ pictureOpts: CameraPreviewPictureOptions = {
   quality: 85
 }
 
-constructor(public navCtrl: NavController,private cameraPreview: CameraPreview, private camera : Camera, private alertCtrl : AlertController, public toastCtrl: ToastController) {
+constructor(public http: Http, public navCtrl: NavController,private cameraPreview: CameraPreview, private camera : Camera, private alertCtrl : AlertController, public toastCtrl: ToastController) {
   this.startCamera();
+  this.callDistMatrix();
 }
 
 //run once app is fully loaded
@@ -73,4 +94,5 @@ this.cameraPreview.stopCamera();
 changeEffect(){
   console.log("Change Effect");
 }
+
 }

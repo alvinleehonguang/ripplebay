@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Transport :)</ion-title>
+    <ion-title>Transport</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -11,46 +11,52 @@
 </ion-fab>
 
 <ion-list>  
+
 <ion-item>
-  <ion-label color="primary">Date</ion-label>
+  <ion-label color="primary" floating>Date</ion-label>
   <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="myDate"></ion-datetime>
 </ion-item>
 
 <ion-item>
-  <ion-label color="primary">Start Time</ion-label>
+  <ion-label color="primary" floating>Start Time</ion-label>
   <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
 </ion-item>
 
 <ion-item>
-  <ion-label color="primary">From</ion-label>
-  <ion-input></ion-input>
+  <ion-label color="primary" floating>From</ion-label>
+  <ion-input [(ngModel)]="start"></ion-input>
 </ion-item>
 
 <ion-item>
-  <ion-label color="primary">To</ion-label>
-  <ion-input></ion-input>
+  <ion-label color="primary" floating>To</ion-label>
+  <ion-input [(ngModel)]="end"></ion-input>
 </ion-item>
 
 <ion-item>
   <ion-label color="primary">Mode of Transport</ion-label>
   <ion-select [(ngModel)]="mode">
-    <ion-option value="Public Transport">Female</ion-option>
-    <ion-option value="m">Male</ion-option>
+    <ion-option *ngFor="let ut of modeList" [value]="ut.value" [innerHTML]="ut.label"></ion-option>
+    <ion-option value="Taxi">Taxi</ion-option>
+    <ion-option value="Car">Car</ion-option>
   </ion-select>
 </ion-item>
 
-<ion-item>
+<ion-item *ngIf="mode == 'Car'">
+    <ion-label>Calculate Mileage</ion-label>
+    <ion-checkbox [(ngModel)]="mileage" (ionChange)="callDistMatrix()"></ion-checkbox>
+</ion-item>
+
+<ion-item *ngFor="let mlg = mileage">
+    <ion-label>{{mlg}}</ion-label>
+</ion-item>
+
+<ion-item *ngIf="mode == 'Car'">
   <ion-label color="primary" floating>Parking</ion-label>
   <ion-input></ion-input>
 </ion-item>
 
-<ion-item>
+<ion-item *ngIf="mode == 'Car'">
   <ion-label color="primary" floating>ERP</ion-label>
-  <ion-input></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label color="primary" floating>Parking</ion-label>
   <ion-input></ion-input>
 </ion-item>
 
