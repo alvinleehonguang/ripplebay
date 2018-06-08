@@ -65,4 +65,8 @@ this.cameraPreview.setColorEffect('negative');
 this.cameraPreview.stopCamera();
 
 }
+
+changeEffect(){
+  console.log("Change Effect");
+}
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Transport :)</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -9,6 +9,62 @@
       <ion-icon name="md-color-wand"></ion-icon>
   </button>
 </ion-fab>
+
+<ion-list>  
+<ion-item>
+  <ion-label color="primary">Date</ion-label>
+  <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="myDate"></ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary">Start Time</ion-label>
+  <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="timeStarts"></ion-datetime>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary">From</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary">To</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary">Mode of Transport</ion-label>
+  <ion-select [(ngModel)]="mode">
+    <ion-option value="Public Transport">Female</ion-option>
+    <ion-option value="m">Male</ion-option>
+  </ion-select>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary" floating>Parking</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary" floating>ERP</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary" floating>Parking</ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary" floating>Amount ($) </ion-label>
+  <ion-input></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary">Purpose</ion-label>
+  <ion-textarea></ion-textarea>
+</ion-item>
+
+</ion-list>
 
 <ion-fab right bottom>
   <button ion-fab color="primary" (click)="takePic()">
