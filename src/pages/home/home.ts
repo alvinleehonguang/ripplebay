@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+
 import { NavController,AlertController,ToastController } from 'ionic-angular';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import { CameraPreview, CameraPreviewPictureOptions, CameraPreviewOptions, CameraPreviewDimensions } from '@ionic-native/camera-preview';
 
 declare var cordova: any; // global variable for paths
+
 
 @Component({
   selector: 'page-home',
@@ -61,8 +63,10 @@ this.cameraPreview.switchCamera();
 // set color effect to negative
 this.cameraPreview.setColorEffect('negative');
 
+
 // Stop the camera preview
 this.cameraPreview.stopCamera();
+
 
 }
 }
