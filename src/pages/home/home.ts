@@ -24,7 +24,7 @@ cameraPreviewOpts: CameraPreviewOptions = {
     camera: 'back',
     toBack: true, //Use the rear camera
     tapPhoto: false,
-    tapFocus: true,
+    tapToFocus: true,
     previewDrag: true
   };
 
