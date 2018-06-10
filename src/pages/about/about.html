@@ -1,12 +1,17 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      About 123123
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-item>
+  <ion-label color="primary" floating>Starting Location</ion-label>
+  <ion-input [(ngModel)]="start"> </ion-input>
+</ion-item>
 
-<ion-content padding>
+<ion-item>
+  <ion-label color="primary" floating>Destination</ion-label>
+  <ion-input  [(ngModel)]="destination"></ion-input>
+</ion-item>
 
-  <button ion-button (click)="sendSMS()">Send SMS</button>
-</ion-content>
+<button ion-button full (click)="generateDistance()" color="secondary">Generate distance</button>
+
+
+<ion-item>
+  <ion-label color="primary" floating>Distance</ion-label>
+  <ion-input [readonly]="true" color="primary"  [(ngModel)]="distance" floating></ion-input>
+</ion-item>
